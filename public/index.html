@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>URL Shortener</title>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="./assets/theme.css">
+    <!-- Angular, Clipboard, ngClipboard -->
+    <script src="./js/bundle.js"></script>
+    <!-- Link App -->
+    <script src="./js/linkApp.js"></script>
+</head>
+
+<body>
+    <h1 class="text-primary">URL Shortener</h1>
+    <p>Append <code>/new/X</code> to this address, where <code>X</code> is the URL you want to shorten, and receive a shortened<span class="text-warning">*</span> URL in response.</p>
+    <div ng-app='linkApp' ng-controller='LinkController as lCtrl'>
+        <p>Or just try it out right here!</p>
+        <form class="container-fluid">
+            <div class="form-group row">
+                <label for="origUrl" class="col-sm-1 form-control-label">Original URL: </label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" id="origUrl" name="origUrl" placeholder="http://..." ng-model="lCtrl.origUrl" ng-change="lCtrl.urlChanged()"></input>
+                </div>
+                <button class="btn btn-primary col-sm-2" ng-click="lCtrl.shorten()">Shorten it!</button>
+
+            </div>
+            <div class="form-group row">
+                <label for="shortUrl" class="col-sm-1 form-control-label">Shortened URL: </label>
+                <div class="col-sm-6">
+                    <input id="shortUrl" type="text" class="form-control" name="shortUrl" placeholder="http://..." ng-model="lCtrl.shortUrl" readonly></input>
+                </div>
+                <button class="btn col-sm-2" ngclipboard data-clipboard-target="#shortUrl"><img src="assets/Octicons-clippy.svg" id="clippy" alt="Copy to clipboard"></button>
+            </div>
+        </form>
+        <p class="text-warning">* Due to the length of this site's URL, "shortened" URLs may be longer than the original!</p>
+    </div>
+</body>
+
+</html>
