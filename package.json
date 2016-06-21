@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "A simple URL shortener",
   "main": "server.js",
-  "repository": "",
+  "repository": "https://github.com/Fourbits/fcc-little-url",
   "author": "Fourbits",
   "dependencies": {
     "angular": "^1.5.7",
